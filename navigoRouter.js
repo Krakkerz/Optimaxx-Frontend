@@ -10,6 +10,7 @@ import {
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate('./Components/home/home.html')
+    const templateMovies = await loadTemplate('./Components/movies/movies.html')
 
     const router = new Navigo("/", { hash: true });
     router
@@ -21,6 +22,7 @@ window.addEventListener("load", async () => {
         })
         .on("/", () => renderText("Home", "content"))
         .on("/home", () => renderTemplate(templateAbout, 'content'))
+        .on("/movies", () => renderTemplate(templateMovies, 'content'))
         .notFound(() => renderText("No page for this route found", "content"))
         .resolve()
 });
