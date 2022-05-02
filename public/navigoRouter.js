@@ -6,13 +6,13 @@ import {
     adjustForMissingHash,
     loadTemplate,
     renderTemplate,
-} from "./utils.js"
+} from "./Utils.js"
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate('./Components/home/home.html')
     const templateMovies = await loadTemplate('./Components/movies/movies.html')
 
-    const router = new Navigo("/", { hash: true });
+    const router = new Navigo("/", { hash: false });
     router
         .hooks({
             before(done, match) {
