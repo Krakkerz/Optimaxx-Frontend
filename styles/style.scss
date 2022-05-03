@@ -1,28 +1,30 @@
 nav {
-  height: 5em;
-  background-color: green;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
   width: 100%;
-  max-width: 100vw;
-
-  a {
-    color: aliceblue;
-    text-decoration: none;
-    font-size: 1.725em;
-  }
-
-  li {
-    display: inline-block;
-    a {
-      text-decoration: none;
-      color: aliceblue;
-      font-size: 1.5em;
-      margin-left: 1.2em;
-    }
-    a:hover {
-      background-color: #666;
+  ul {
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+    li {
+      display: inline;
+      font-family: "Fira Sans", sans-serif;
+      font-size: 17px;
+      a {
+        color: #f2f2f2;
+        text-decoration: none;
+        padding: 14px;
+        &:hover {
+          background-color: #111;
+        }
+      }
     }
   }
 }
-.active {
-  background-color: #666;
+
+body {
+  margin-top: 7.5em;
 }
