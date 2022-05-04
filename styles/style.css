@@ -81,6 +81,24 @@ nav ul li a :active {
   border-color: white;
 }
 
+<<<<<<< HEAD
+.movie-container span,
+.movie-container p {
+  color: #ffffff;
+}
+.movie-container img {
+  width: 210px;
+}
+
+.btn__buy {
+  width: 210px;
+  margin-top: 5px;
+  background-color: hsl(270deg, 100%, 40%);
+  color: #ffffff;
+}
+
+=======
+>>>>>>> main
 .movie-posters {
   display: flex;
   flex-direction: row;
