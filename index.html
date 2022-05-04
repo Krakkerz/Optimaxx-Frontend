@@ -10,28 +10,20 @@
     <link rel="stylesheet" href="/styles/style.css">
     
     
-    <script src="navigoRouter.js" type="module"></script>
+    <script src="index.js" type="module"></script>
 </head>
 
 <body>
 
 <nav>
-    <div>
-        <a href="/home" data-navigo>Optimaxx</a>
-        <div id="navbarNav">
-            <ul class="menu" id="menu">
-                <li class="">
-                    <a href="/home" data-navigo>Home</a>
-                </li>
-                <li class="">
-                    <a href="/movies" data-navigo>Movies</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+
+    <a data-navigo href="/">Optimaxx</a>
+    <a data-navigo href="/movies">Movies</a>
+    <a data-navigo href="/showings">Showings</a>
+    <a data-navigo href="/locations">Locations</a>
+    <a data-navigo href="/about">About</a>
 </nav>
-<div id="content"></div>
-
+<main></main>
+<footer></footer>
 </body>
-
 </html>

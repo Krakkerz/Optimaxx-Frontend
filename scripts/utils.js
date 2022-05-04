@@ -1,6 +1,6 @@
 /**
  * Appends the provided template to the node with the id contentId
- * @param {template} template
+ * @param {HTMLTemplateElement} template
  * @param {*} contentId
  */
 export function renderTemplate(template, contentId) {
@@ -32,7 +32,7 @@ export function renderText(txt, contentId){
  * @returns {HTMLTemplateElement}
  */
 export function loadTemplateFromDom(templateId) {
-    const template = document.getElementById(templateId)
+    const template = document.querySelector("template#"+templateId)
     if(!template){
         throw new Error(`No Element found with provided ID: '${templateId}'`)
     }
@@ -43,11 +43,11 @@ export function loadTemplateFromDom(templateId) {
 }
 
 /**
- * Loads an external file with an html-template, adds it to the body of your page, and returns the template
+ * Loads an external file with an HTML-template, adds it to the body of your page, and returns the template
  * The file to be loaded can contain more than one template, but the one that will be returned must
  * be the first one in the file and this does not require an id
  * @param {string} page - Path to the file containing the template ('/templates/template.html')
- * @returns {template} The first HtmlTemplate found in the file
+ * @returns {HTMLTemplateElement} The first HtmlTemplate found in the file
  */
 export async function loadTemplate(page) {
     const resHtml = await fetch(page).then(r => {
@@ -56,11 +56,9 @@ export async function loadTemplate(page) {
         }
         return r.text()
     });
-    const body = document.getElementsByTagName("BODY")[0];
-    const div = document.createElement("div");
-    div.innerHTML = resHtml;
-    body.appendChild(div)
-    return div.querySelector("template")
+    const template = document.createElement("template")
+    template.innerHTML = resHtml
+    return template
 };
 
 /**
@@ -81,11 +79,11 @@ export function adjustForMissingHash() {
 /**
  * Sets active element on a div (or similar) containing a-tags (with data-navigo attributes ) used as a "menu"
  * Meant to be called in a before-hook with Navigo
- * @param {string} topnav - Id for the element that contains the "navigation structure"
+ * @param {string} nav_selector - Id for the element that contains the "navigation structure"
  * @param {string} activeUrl - The URL which are the "active" one
  */
-export function setActiveLink(topnav, activeUrl) {
-    const links = document.getElementById(topnav).querySelectorAll("a");
+export function setActiveLink(nav_selector, activeUrl) {
+    const links = document.querySelector(nav_selector).querySelectorAll("a");
     links.forEach(child => {
         child.classList.remove("active")
         //remove leading '/' if any
