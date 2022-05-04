@@ -2,7 +2,6 @@
 // TO BE CHANGED TO BACKEND API.
 // THIS IS ONLY FOR MOCKING
 import {handleHttpErrors} from "../../Utility/error.js";
-import {encode} from "../../Utility/Utils.js";
 
 const SERVER = 'http://localhost:3000/movies'
 
@@ -17,26 +16,45 @@ export async function fetchMovieData() {
 
 
                 for (let i = 0; i < movies.length; i++){
+                    const container = document.createElement("div")
+                    const details = document.createElement("details")
+                    const summary = document.createElement("summary")
+                    summary.innerText = "See more!"
+
                     let title = document.createElement("p")
                     title.innerText = movies[i].title
-                    movieContainer.appendChild(title)
+                    title.classList.add("title")
+                    container.appendChild(title)
+                    movieContainer.appendChild(container)
 
                     let image = document.createElement("img")
                     image.src = movies[i].image
-                    movieContainer.appendChild(image)
+                    container.appendChild(image)
+                    movieContainer.appendChild(container)
 
                     let duration = document.createElement("p")
-                    duration.innerText = movies[i].duration
-                    movieContainer.appendChild(duration)
+                    duration.innerText = "Duration: " + movies[i].duration
+                    container.appendChild(duration)
+                    movieContainer.appendChild(container)
 
                     let rating = document.createElement("p")
-                    rating.innerText = movies[i].rating
-                    movieContainer.appendChild(rating)
+                    rating.innerText = "Rating: " + movies[i].rating
+                    container.appendChild(rating)
+                    movieContainer.appendChild(container)
+
+                    let description = document.createElement("p")
+                    description.innerText = movies[i].description
+
+                    details.appendChild(description)
+                    details.appendChild(summary)
+                    container.appendChild(details)
+                    movieContainer.appendChild(container)
 
                     let button = document.createElement("button")
                     button.classList.add("btn__buy")
                     button.innerText = "Buy ticket!"
-                    movieContainer.appendChild(button)
+                    container.appendChild(button)
+                    movieContainer.appendChild(container)
 
                 }
             })
