@@ -130,6 +130,7 @@ nav {
 .btn {
   &__buy {
     width: 210px;
+    height: fit-content;
     margin-top: 5px;
     background-color: hsl(270 100% 40%);
     color: #ffffff;

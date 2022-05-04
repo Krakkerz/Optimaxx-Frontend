@@ -3,10 +3,10 @@ import "https://unpkg.com/navigo"  //Will create the global Navigo object used b
 import {
     renderText,
     setActiveLink,
-    adjustForMissingHash,
     loadTemplate,
     renderTemplate,
 } from "../Utility/Utils.js"
+import {fetchMovieData} from "../Components/movies/movies.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate('./Components/home/home.html')
@@ -22,10 +22,7 @@ window.addEventListener("load", async () => {
         })
         .on("/", () => renderText("Home", "content"))
         .on("/home", () => renderTemplate(templateAbout, 'content'))
-        .on("/movies", () => renderTemplate(templateMovies, 'content'))
+        .on("/movies", () => renderTemplate(templateMovies, 'content'), fetchMovieData())
         .notFound(() => renderText("No page for this route found", "content"))
         .resolve()
 });
-
-
-window.onerror = (e) => alert(e)
