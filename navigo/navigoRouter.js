@@ -6,7 +6,7 @@ import {
     adjustForMissingHash,
     loadTemplate,
     renderTemplate,
-} from "./Utils.js"
+} from "../Utility/Utils.js"
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate('./Components/home/home.html')
