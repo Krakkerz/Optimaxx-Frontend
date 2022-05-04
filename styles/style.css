@@ -81,6 +81,7 @@ nav ul li a :active {
   border-color: white;
 }
 
+<<<<<<< HEAD
 .movie-container span,
 .movie-container p {
   color: #ffffff;
@@ -96,6 +97,8 @@ nav ul li a :active {
   color: #ffffff;
 }
 
+=======
+>>>>>>> main
 .movie-posters {
   display: flex;
   flex-direction: row;
