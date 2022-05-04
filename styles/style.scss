@@ -117,16 +117,42 @@ nav {
     }
   }
 }
-
 .movie-container {
-  span,
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
   p {
     color: #ffffff;
   }
   img {
+    margin: 5px 0 5px 0;
     width: 210px;
   }
-}
+  button {
+    margin: 15px 0 15px 0;
+  }
+  details {
+    color: #ffffff;
+    summary {
+      margin-top: 1em;
+      list-style: none;
+      text-decoration: underline;
+      background-color: hsl(270 100% 40%);;
+      width: 210px;
+      text-align: center;
+      border: 1px solid #ffffff;
+      }
+    }
+  }
+  div {
+    border: 2px solid orange;
+    margin: 2px;
+    justify-items: center;
+
+  }
+  .title {
+    max-width: 210px;
+    font-size: 1.225em;
+  }
 .btn {
   &__buy {
     width: 210px;
