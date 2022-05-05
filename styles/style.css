@@ -124,6 +124,7 @@ nav ul li a :active {
 }
 .movie-container details {
   color: #ffffff;
+  max-width: 210px;
 }
 .movie-container details summary {
   margin-top: 1em;

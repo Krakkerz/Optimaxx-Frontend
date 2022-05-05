@@ -53,8 +53,12 @@ export async function fetchMovieData() {
                     let button = document.createElement("button")
                     button.classList.add("btn__buy")
                     button.innerText = "Buy ticket!"
+                    button.id = movies[i].id
                     container.appendChild(button)
                     movieContainer.appendChild(container)
+
+                    button.addEventListener('click', () => console.log(movies[i].id))
+
 
                 }
             })
