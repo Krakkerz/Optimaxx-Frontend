@@ -47,6 +47,8 @@ export async function fetchMovieData() {
 
                     let trailer = document.createElement("iframe")
                     trailer.src = movies[i].trailer
+                    trailer.setAttribute('allowFullScreen','true')
+                    trailer.setAttribute('frameborder','1')
 
                     details.appendChild(description)
                     details.appendChild(summary)
@@ -58,7 +60,7 @@ export async function fetchMovieData() {
 
                     let button = document.createElement("button")
                     button.classList.add("btn__buy")
-                    button.innerText = "Buy ticket!"
+                    button.innerText = "Reserve  ticket!"
                     button.id = movies[i].id
                     container.appendChild(button)
                     movieContainer.appendChild(container)
