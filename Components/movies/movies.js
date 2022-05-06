@@ -45,10 +45,16 @@ export async function fetchMovieData() {
                     let description = document.createElement("p")
                     description.innerText = movies[i].description
 
+                    let trailer = document.createElement("iframe")
+                    trailer.src = movies[i].trailer
+
                     details.appendChild(description)
                     details.appendChild(summary)
+                    description.appendChild(trailer)
                     container.appendChild(details)
                     movieContainer.appendChild(container)
+
+
 
                     let button = document.createElement("button")
                     button.classList.add("btn__buy")
@@ -56,6 +62,7 @@ export async function fetchMovieData() {
                     button.id = movies[i].id
                     container.appendChild(button)
                     movieContainer.appendChild(container)
+
 
                     button.addEventListener('click', () => console.log(movies[i].id))
 

@@ -22,7 +22,10 @@ window.addEventListener("load", async () => {
         })
         .on("/", () => renderText("Home", "content"))
         .on("/home", () => renderTemplate(templateAbout, 'content'))
-        .on("/movies", () => renderTemplate(templateMovies, 'content'), fetchMovieData())
+        .on("/movies", () => {
+            renderTemplate(templateMovies, 'content')
+            fetchMovieData()
+        })
         .notFound(() => renderText("No page for this route found", "content"))
         .resolve()
 });
