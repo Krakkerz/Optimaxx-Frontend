@@ -3,7 +3,7 @@
 // THIS IS ONLY FOR MOCKING
 import {handleHttpErrors} from "../../Utility/error.js";
 
-const SERVER = 'http://localhost:3000/movies'
+const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
 
 export async function fetchMovieData() {
 
@@ -16,9 +16,12 @@ export async function fetchMovieData() {
 
 
                 for (let i = 0; i < movies.length; i++){
+                    // section const
                     const container = document.createElement("div")
                     const details = document.createElement("details")
                     const summary = document.createElement("summary")
+                    const trailerLink = document.createElement("a")
+
                     summary.innerText = "See more!"
 
                     let title = document.createElement("p")
@@ -28,7 +31,7 @@ export async function fetchMovieData() {
                     movieContainer.appendChild(container)
 
                     let image = document.createElement("img")
-                    image.src = movies[i].image
+                    image.src = movies[i].picture
                     container.appendChild(image)
                     movieContainer.appendChild(container)
 
@@ -42,17 +45,16 @@ export async function fetchMovieData() {
                     container.appendChild(rating)
                     movieContainer.appendChild(container)
 
-                    let description = document.createElement("p")
-                    description.innerText = movies[i].description
+                    let plot = document.createElement("p")
+                    plot.innerText = movies[i].plot
 
-                    let trailer = document.createElement("iframe")
-                    trailer.src = movies[i].trailer
-                    trailer.setAttribute('allowFullScreen','true')
-                    trailer.setAttribute('frameborder','1')
+                    trailerLink.innerText = "Watch trailer"
+                    trailerLink.setAttribute("href",movies[i].trailer)
+                    trailerLink.setAttribute("target","_blank")
 
-                    details.appendChild(description)
+                    details.appendChild(plot)
                     details.appendChild(summary)
-                    description.appendChild(trailer)
+                    details.appendChild(trailerLink)
                     container.appendChild(details)
                     movieContainer.appendChild(container)
 

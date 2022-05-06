@@ -111,10 +111,14 @@ nav {
       text-align: center;
       border: 1px solid #ffffff;
       }
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
-  iframe {
-    max-width: 210px;
-  }
+    }
   }
   div {
     margin: 2px;
@@ -124,6 +128,8 @@ nav {
   .title {
     max-width: 210px;
     font-size: 1.225em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 .btn {
   &__buy {

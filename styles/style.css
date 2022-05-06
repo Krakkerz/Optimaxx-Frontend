@@ -107,8 +107,12 @@ nav ul li a :active {
   text-align: center;
   border: 1px solid #ffffff;
 }
-.movie-container iframe {
-  max-width: 210px;
+.movie-container details a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.movie-container details a:hover {
+  text-decoration: underline;
 }
 
 div {
@@ -119,6 +123,8 @@ div {
 .title {
   max-width: 210px;
   font-size: 1.225em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .btn__buy {
