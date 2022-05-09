@@ -2,9 +2,10 @@
 // TO BE CHANGED TO BACKEND API.
 // THIS IS ONLY FOR MOCKING
 import {handleHttpErrors} from "../../Utility/error.js";
+import {getParams} from "../tickets/tickets.js";
 
 const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
-
+//const ticket = "./Components/tickets/tickets.html"
 export async function fetchMovieData() {
 
     try {
@@ -45,6 +46,12 @@ export async function fetchMovieData() {
                     container.appendChild(rating)
                     movieContainer.appendChild(container)
 
+                    let genre = document.createElement("p")
+                    genre.innerText = "Genre: " + movies[i].category
+                    genre.classList.add("genre")
+                    container.appendChild(genre)
+                    movieContainer.appendChild(container)
+
                     let plot = document.createElement("p")
                     plot.innerText = movies[i].plot
 
@@ -58,19 +65,16 @@ export async function fetchMovieData() {
                     container.appendChild(details)
                     movieContainer.appendChild(container)
 
+                    let ticketTemplate = document.createElement("a")
+                    ticketTemplate.classList.add("btn__buy")
+                    ticketTemplate.id = movies[i].id
+                    ticketTemplate.innerText ="Reserve ticket!"
 
+                    ticketTemplate.setAttribute("data-navigo","")
+                    ticketTemplate.setAttribute("href","#/tickets/?id=" + movies[i].id)
 
-                    let button = document.createElement("button")
-                    button.classList.add("btn__buy")
-                    button.innerText = "Reserve  ticket!"
-                    button.id = movies[i].id
-                    container.appendChild(button)
+                    container.appendChild(ticketTemplate)
                     movieContainer.appendChild(container)
-
-
-                    button.addEventListener('click', () => console.log(movies[i].id))
-
-
                 }
             })
 
