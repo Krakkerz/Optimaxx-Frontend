@@ -119,17 +119,17 @@ nav {
       }
     }
     }
-  }
-  div {
-    margin: 2px;
-    justify-items: center;
-
-  }
   .title {
     max-width: 210px;
     font-size: 1.225em;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    overflow-x: hidden;
+    word-wrap: break-word;
+  }
+  }
+  div {
+    margin: 2px;
+    justify-items: center;
   }
   .genre {
     max-width: 210px;

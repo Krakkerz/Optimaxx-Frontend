@@ -114,17 +114,17 @@ nav ul li a :active {
 .movie-container details a:hover {
   text-decoration: underline;
 }
+.movie-container .title {
+  max-width: 210px;
+  font-size: 1.225em;
+  white-space: nowrap;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
 
 div {
   margin: 2px;
   justify-items: center;
-}
-
-.title {
-  max-width: 210px;
-  font-size: 1.225em;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .genre {

@@ -31,6 +31,7 @@ window.addEventListener("load", async () => {
         .on("/tickets", (match) => {
             renderTemplate(templateTickets,'content')
             getParams(match)
+            router.updatePageLinks()
         })
         .notFound(() => renderText("No page for this route found", "content"))
         .resolve()

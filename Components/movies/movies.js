@@ -2,10 +2,10 @@
 // TO BE CHANGED TO BACKEND API.
 // THIS IS ONLY FOR MOCKING
 import {handleHttpErrors} from "../../Utility/error.js";
-import {loadTemplate} from "../../Utility/Utils.js";
+import {getParams} from "../tickets/tickets.js";
 
 const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
-const ticket = "./Components/tickets/tickets.html"
+//const ticket = "./Components/tickets/tickets.html"
 export async function fetchMovieData() {
 
     try {
@@ -67,26 +67,14 @@ export async function fetchMovieData() {
 
                     let ticketTemplate = document.createElement("a")
                     ticketTemplate.classList.add("btn__buy")
-                    ticketTemplate.setAttribute("href","https://www.facebook.com/")
-                    ticketTemplate.setAttribute("data-navigo","")
+                    ticketTemplate.id = movies[i].id
                     ticketTemplate.innerText ="Reserve ticket!"
+
+                    ticketTemplate.setAttribute("data-navigo","")
+                    ticketTemplate.setAttribute("href","#/tickets/?id=" + movies[i].id)
+
                     container.appendChild(ticketTemplate)
                     movieContainer.appendChild(container)
-
-                  /*  let button = document.createElement("a")
-                    button.classList.add("btn__buy")
-                    button.innerText = "Reserve  ticket!"
-                    button.id = movies[i].id
-                    ticketTemplate.setAttribute("href",'https://www.google.dk/')
-                    ticketTemplate.setAttribute("data-navigo","")
-                    button.appendChild(ticketTemplate)
-                    container.appendChild(button)
-                    movieContainer.appendChild(container)*/
-
-
-                    //button.addEventListener('click', () => console.log(movies[i].id))
-
-
                 }
             })
 
