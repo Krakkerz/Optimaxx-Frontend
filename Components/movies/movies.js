@@ -2,9 +2,10 @@
 // TO BE CHANGED TO BACKEND API.
 // THIS IS ONLY FOR MOCKING
 import {handleHttpErrors} from "../../Utility/error.js";
+import {loadTemplate} from "../../Utility/Utils.js";
 
 const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
-
+const ticket = "./Components/tickets/tickets.html"
 export async function fetchMovieData() {
 
     try {
@@ -45,6 +46,12 @@ export async function fetchMovieData() {
                     container.appendChild(rating)
                     movieContainer.appendChild(container)
 
+                    let genre = document.createElement("p")
+                    genre.innerText = "Genre: " + movies[i].category
+                    genre.classList.add("genre")
+                    container.appendChild(genre)
+                    movieContainer.appendChild(container)
+
                     let plot = document.createElement("p")
                     plot.innerText = movies[i].plot
 
@@ -58,17 +65,26 @@ export async function fetchMovieData() {
                     container.appendChild(details)
                     movieContainer.appendChild(container)
 
+                    let ticketTemplate = document.createElement("a")
+                    ticketTemplate.classList.add("btn__buy")
+                    ticketTemplate.setAttribute("href","https://www.facebook.com/")
+                    ticketTemplate.setAttribute("data-navigo","")
+                    ticketTemplate.innerText ="Reserve ticket!"
+                    container.appendChild(ticketTemplate)
+                    movieContainer.appendChild(container)
 
-
-                    let button = document.createElement("button")
+                  /*  let button = document.createElement("a")
                     button.classList.add("btn__buy")
                     button.innerText = "Reserve  ticket!"
                     button.id = movies[i].id
+                    ticketTemplate.setAttribute("href",'https://www.google.dk/')
+                    ticketTemplate.setAttribute("data-navigo","")
+                    button.appendChild(ticketTemplate)
                     container.appendChild(button)
-                    movieContainer.appendChild(container)
+                    movieContainer.appendChild(container)*/
 
 
-                    button.addEventListener('click', () => console.log(movies[i].id))
+                    //button.addEventListener('click', () => console.log(movies[i].id))
 
 
                 }

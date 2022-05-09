@@ -131,7 +131,10 @@ nav {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-.btn {
+  .genre {
+    max-width: 210px;
+  }
+.btn  {
   &__buy {
     width: 210px;
     height: fit-content;

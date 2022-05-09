@@ -127,6 +127,10 @@ div {
   text-overflow: ellipsis;
 }
 
+.genre {
+  max-width: 210px;
+}
+
 .btn__buy {
   width: 210px;
   height: fit-content;
