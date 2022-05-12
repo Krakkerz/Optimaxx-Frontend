@@ -7,7 +7,7 @@ import {
     renderTemplate,
 } from "../Utility/Utils.js"
 import {fetchMovieData} from "../Components/movies/movies.js";
-import {getParams} from "../Components/tickets/tickets.js";
+import {data} from "../Components/tickets/tickets.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate('./Components/home/home.html')
@@ -30,7 +30,8 @@ window.addEventListener("load", async () => {
         })
         .on("/tickets", (match) => {
             renderTemplate(templateTickets,'content')
-            getParams(match)
+            data(match)
+            //getParams(match)
             router.updatePageLinks()
         })
         .notFound(() => renderText("No page for this route found", "content"))
