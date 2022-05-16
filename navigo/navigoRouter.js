@@ -8,11 +8,13 @@ import {
 } from "../Utility/Utils.js"
 import {fetchMovieData} from "../Components/movies/movies.js";
 import {data} from "../Components/tickets/tickets.js";
+import {seats} from "../Components/seats/seats.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate('./Components/home/home.html')
     const templateMovies = await loadTemplate('./Components/movies/movies.html')
     const templateTickets = await loadTemplate('./Components/tickets/tickets.html')
+    const templateSeats = await loadTemplate('./Components/seats/seats.html')
 
     const router = new Navigo("/", { hash: true });
     router
@@ -32,6 +34,10 @@ window.addEventListener("load", async () => {
             renderTemplate(templateTickets,'content')
             data(match)
             router.updatePageLinks()
+        })
+        .on("/seats", (match) => {
+            renderTemplate(templateSeats, 'content')
+            seats(match)
         })
         .notFound(() => renderText("No page for this route found", "content"))
         .resolve()
