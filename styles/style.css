@@ -103,6 +103,13 @@ nav ul li a :active {
 .ticket-container div a p {
   background-color: green;
 }
+.ticket-container div a p:first-child {
+  border-top: 2px solid #ffffff;
+}
+
+.movie-home * {
+  color: #ffffff;
+}
 
 .movie-container {
   margin-top: 50px;

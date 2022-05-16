@@ -106,11 +106,20 @@ nav {
       }
       p {
         background-color: green;
+        &:first-child {
+          border-top: 2px solid #ffffff;
+          }
         }
       }
+
     }
   }
 
+.movie-home {
+  * {
+    color: #ffffff;
+  }
+}
 .movie-container {
   margin-top: 50px;
   display: grid;
@@ -144,6 +153,7 @@ nav {
     a {
       color: #ffffff;
       text-decoration: none;
+
       &:hover {
         text-decoration: underline;
       }
