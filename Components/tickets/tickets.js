@@ -6,7 +6,7 @@
 
 import {handleHttpErrors} from "../../Utility/error.js";
 
-const SERVER = 'https://optimaxx.azurewebsites.net/api/movies/'
+const SERVER = 'http://localhost:3000/showings'
 
 
 export async function data(match){
@@ -14,30 +14,48 @@ export async function data(match){
     console.log(movieId)
     const weekDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
     const saturday = document.getElementById("saturday")
+    const monday = document.getElementById("monday")
 
     try {
-        const data = await fetch(SERVER + movieId + "/showings")
+        const data = await fetch(SERVER)
             .then(response => handleHttpErrors(response))
             .then(data => {
+                console.log(data)
 
                 for (let i = 0; 0 < data.length; i++){
-                    let div = document.createElement("div")
-                    let startWeekDay = document.createElement("p")
-                    let startDate = document.createElement("p")
-                    let startTime = document.createElement("p")
-                    let anchor = document.createElement("a")
+                    if (data[i].startWeekday === "SATURDAY") {
+                        let startWeekDay = document.createElement("p")
+                        let startDate = document.createElement("p")
+                        let startTime = document.createElement("p")
+                        let anchor = document.createElement("a")
 
-                    anchor.setAttribute("href","https://www.google.com")
+                        anchor.setAttribute("href", "https://www.google.com")
 
-                    startWeekDay.innerText = data[i].startWeekday
-                    startDate.innerText = data[i].startDate
-                    startTime.innerText = data[i].startTime
+                        startWeekDay.innerText = data[i].startWeekday
+                        startDate.innerText = data[i].startDate
+                        startTime.innerText = data[i].startTime
 
-                    anchor.appendChild(startDate)
-                    anchor.appendChild(startTime)
+                        anchor.append(startWeekDay, startDate, startTime)
 
-                    div.appendChild(anchor)
-                    saturday.appendChild(div)
+                        saturday.appendChild(anchor)
+                    }
+                    if (data[i].startWeekday === "MONDAY"){
+                        let startWeekDay = document.createElement("p")
+                        let startDate = document.createElement("p")
+                        let startTime = document.createElement("p")
+                        let anchor = document.createElement("a")
+
+                        anchor.setAttribute("href", "https://www.google.com")
+
+                        startWeekDay.innerText = data[i].startWeekday
+                        startDate.innerText = data[i].startDate
+                        startTime.innerText = data[i].startTime
+
+                        anchor.append(startWeekDay, startDate, startTime)
+
+                        monday.appendChild(anchor)
+
+                    }
 
                 }
 
