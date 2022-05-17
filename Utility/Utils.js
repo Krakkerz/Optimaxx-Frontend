@@ -110,3 +110,17 @@ export function encode(str) {
     str = str.replace(/'/g, "&#039;");
     return str;
 }
+
+export function makeOptions(method, body) {
+    const options = {
+        method: method,
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        }
+    }
+    if (body) { //Observe how we can add new fields to an object when needed
+        options.body = JSON.stringify(body);
+    }
+    return options;
+}

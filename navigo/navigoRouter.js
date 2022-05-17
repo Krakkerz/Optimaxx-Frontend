@@ -8,7 +8,7 @@ import {
 } from "../Utility/Utils.js"
 import {fetchMovieData} from "../Components/movies/movies.js";
 import {data} from "../Components/tickets/tickets.js";
-import {seats} from "../Components/seats/seats.js";
+import {reserveSeat} from "../Components/seats/seats.js";
 
 window.addEventListener("load", async () => {
     const templateAbout = await loadTemplate('./Components/home/home.html')
@@ -37,7 +37,7 @@ window.addEventListener("load", async () => {
         })
         .on("/seats", (match) => {
             renderTemplate(templateSeats, 'content')
-            seats(match)
+            reserveSeat(match)
         })
         .notFound(() => renderText("No page for this route found", "content"))
         .resolve()

@@ -184,6 +184,15 @@ nav {
       outline: none;
     }
   }
+  &__reserve {
+    width: fit-content;
+    height: 5em;
+    left: 4%;
+    background-color: hsl(270 100% 40%);
+    border-radius: 10%;
+    color: #ffffff;
+    position: relative;
+  }
   th {
     background-color: hsl(270 100% 40%);
     padding: 8px;
