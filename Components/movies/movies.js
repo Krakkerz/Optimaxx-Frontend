@@ -3,8 +3,8 @@
 // THIS IS ONLY FOR MOCKING
 import {handleHttpErrors} from "../../Utility/error.js";
 
-const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
-//const SERVER = 'http://localhost:8080/api/movies/'
+// const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
+const SERVER = 'http://localhost:8080/api/movies/'
 //const ticket = "./Components/tickets/tickets.html"
 export async function fetchMovieData() {
 
