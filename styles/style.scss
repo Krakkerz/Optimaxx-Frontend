@@ -187,11 +187,13 @@ nav {
   &__reserve {
     width: fit-content;
     height: 5em;
-    left: 4%;
     background-color: hsl(270 100% 40%);
     border-radius: 10%;
     color: #ffffff;
-    position: relative;
+    position: absolute;
+    left: 42%;
+    top: -65%;
+    z-index: -1;
   }
   th {
     background-color: hsl(270 100% 40%);
@@ -400,6 +402,11 @@ table {
       border-radius: 7px;
     }
   }
+}
+
+.reserved {
+  pointer-events: none !important;
+  background-color: purple !important;
 }
 
 
