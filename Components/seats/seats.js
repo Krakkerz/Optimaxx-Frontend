@@ -1,5 +1,5 @@
 import {handleHttpErrors} from "../../Utility/error.js";
-import {makeOptions} from "../../Utility/Utils.js";
+import {makeOptions} from "../../utility/utils.js";
 
 const SERVER = 'http://localhost:8080/api/reservations'
 const SHOWING_SERVER = 'http://localhost:8080/api/showings'

@@ -5,7 +5,7 @@ import {
     setActiveLink,
     loadTemplate,
     renderTemplate,
-} from "../Utility/Utils.js"
+} from "../utility/utils.js"
 import {fetchMovieData} from "../Components/movies/movies.js";
 import {data} from "../Components/tickets/tickets.js";
 import {reserveSeat} from "../Components/seats/seats.js";
