@@ -1,15 +1,15 @@
 
 // TO BE CHANGED TO BACKEND API.
 // THIS IS ONLY FOR MOCKING
-import {handleHttpErrors} from "../../Utility/error.js";
+import {handleHttpErrors} from "../../utility/error.js";
+import {SERVER} from "../../utility/config.js";
 
-// const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
-const SERVER = 'http://localhost:8080/api/movies/'
-//const ticket = "./Components/tickets/tickets.html"
+const moviesApi = `${SERVER}/api/movies`
+
 export async function fetchMovieData() {
 
     try {
-        const movies = await fetch(SERVER)
+        const movies = await fetch(moviesApi)
             .then(response => handleHttpErrors(response))
             .then(movies => {
 

@@ -5,10 +5,9 @@
 }*/
 
 import {handleHttpErrors} from "../../Utility/error.js";
+import {SERVER} from "../../utility/config.js";
 
-const SERVER = 'http://localhost:8080/api/movies'
-// const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
-
+const moviesApi = `${SERVER}/api/movies`
 
 export async function data(match){
     const movieId = match?.params?.id
@@ -24,9 +23,9 @@ export async function data(match){
     }
 
     try {
-        const data = await fetch(`${SERVER}/${movieId}/showings`)
+        const data = await fetch(`${moviesApi}/${movieId}/showings`)
             .then(response => handleHttpErrors(response))
-        console.log(`${SERVER}/${movieId}/showings`)
+        console.log(`${moviesApi}/${movieId}/showings`)
         console.log(data)
 
         for (const showing of data) {

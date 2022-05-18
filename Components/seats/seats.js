@@ -1,16 +1,19 @@
-import {handleHttpErrors} from "../../Utility/error.js";
+import {handleHttpErrors} from "../../utility/error.js";
 import {makeOptions} from "../../utility/utils.js";
+import {SERVER} from "../../utility/config.js";
 
-const SERVER = 'http://localhost:8080/api/reservations'
-const SHOWING_SERVER = 'http://localhost:8080/api/showings'
+const reservationsApi = `${SERVER}/api/reservations`
+const showingsApi = `${SERVER}/api/showings`
 
+let showingId;
 let room;
 
-async function updateRoom(showingId) {
-    const showingResponse = await fetch(`${SHOWING_SERVER}/${showingId}`)
+async function updateRoom(_showingId) {
+    const showingResponse = await fetch(`${showingsApi}/${_showingId}`)
         .then(response => handleHttpErrors(response))
 
-    room = showingResponse.room;
+    showingId = showingResponse.id
+    room = showingResponse.room
 }
 
 function renderSeats() {
@@ -33,11 +36,11 @@ function renderSeats() {
     htmlSeatsRight.classList.add("right")
 
     for (let i = 1; i <= rowsInRoom; i++) {
-        const htmlRowLeft = document.createElement("div", [])
+        const htmlRowLeft = document.createElement("div")
         htmlRowLeft.classList.add("cinema-row")
         htmlRowLeft.classList.add(`row-${i}`)
 
-        const htmlRowRight = document.createElement("div", [])
+        const htmlRowRight = document.createElement("div")
         htmlRowRight.classList.add("cinema-row")
         htmlRowRight.classList.add(`row-${i}`)
 
@@ -45,12 +48,7 @@ function renderSeats() {
             const filteredSeats = room.seats.filter(seat => seat["number"] === j && seat["row"] === i)
             const seat = filteredSeats[0] // should check this, tho
 
-            const htmlSeat = document.createElement("div")
-            htmlSeat.classList.add("seat")
-            htmlSeat.classList.add(seat.reserved ? "reserved" : "unreserved")
-
-            htmlSeat.id = seat["id"]
-            htmlSeat.textContent = `row:${seat["row"]} num:${seat["number"]} id:${seat["id"]}`
+            const htmlSeat = createHTMLFromSeat(seat)
 
             if (j % 2 === 0) {
                 htmlRowLeft.appendChild(htmlSeat)
@@ -68,55 +66,68 @@ function renderSeats() {
     document.querySelector(".theatre").appendChild(reserveButton)
 }
 
+function createHTMLFromSeat(seat) {
+    const htmlSeat = document.createElement("div")
+
+    htmlSeat.classList.add("seat")
+    htmlSeat.classList.add(seat.reserved ? "reserved" : "unreserved")
+
+    htmlSeat.id = seat.id
+    htmlSeat.textContent = `row:${seat.row} num:${seat.number} id:${seat.id}`
+
+    return htmlSeat
+}
+
 
 export async function reserveSeat(match) {
     const showingId = match?.params?.showing
-    let seatsToBeReserved = []
-    let options = makeOptions("POST", {
-        accountId: 1,
-        seatIds: seatsToBeReserved,
-        showingId: showingId,
-    })
-    console.log(showingId)
+
     await updateRoom(showingId)
     renderSeats()
+    attachEventListeners()
+}
 
-    const seats = document.querySelectorAll("div > .seat")
-    console.log(seats)
+async function postReservation() {
+    const seatIdsToBeReserved = []
+    for (const activeSeat of document.querySelectorAll(".seat.active")) {
+        seatIdsToBeReserved.push(activeSeat.id)
+    }
 
-        for (let i = 0; i < seats.length; i++) {
-            seats[i].addEventListener('click', function () {
-                console.log("Hello")
-                if (seats[i].className === ("seat unreserved")) {
-                    seats[i].classList.add("active")
-                    seatsToBeReserved.push(i)
-                } else
-                    seats[i].classList.remove("active")
-            })
-            if (seats[i].className === "seat active") {
-                seatsToBeReserved.push(seats[i].id)
-
-            }
-        }
-    const reserveButton = document.getElementById("btn__reserve")
-
-    reserveButton.addEventListener('click', async () => {
-        try {
-            fetch(`${SERVER}`, options)
-                .then(response => handleHttpErrors(response))
-            console.log(seatsToBeReserved)
-            for (const seat of seats) {
-                seat.classList.remove("active")
-            }
-            alert(`Thank you reserving ${seatsToBeReserved.length} ticket(s)`)
-            await updateRoom(showingId)
-            renderSeats()
-        } catch (error) {
-            console.error(error)
-        }
+    const options = makeOptions("POST", {
+        accountId: 1,
+        seatIds: seatIdsToBeReserved,
+        showingId: showingId,
     })
 
+    try {
+        fetch(`${reservationsApi}`, options)
+            .then(response => handleHttpErrors(response))
 
+        console.log(seatIdsToBeReserved)
+        for (const seatId of seatIdsToBeReserved) {
+            const seat = document.getElementById(seatId)
+            seat.classList.remove("active")
+        }
+
+        const numberOfTickets = seatIdsToBeReserved.length
+        alert(`Thank you reserving ${numberOfTickets} ${numberOfTickets > 1 ? "tickets" : "ticket"}`)
+
+        await updateRoom(showingId)
+        renderSeats()
+        attachEventListeners()
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+function attachEventListeners() {
+    const reserveButton = document.getElementById("btn__reserve")
+    reserveButton.addEventListener('click', postReservation)
+
+    const seats = document.querySelectorAll("div > .seat")
+    for (const seat of seats) {
+        seat.addEventListener('click', () => seat.classList.toggle("active"))
+    }
 }
 
 

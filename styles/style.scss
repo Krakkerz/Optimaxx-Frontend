@@ -18,6 +18,11 @@
           43.9px 42.2px 68.5px -1.8px hsl(var(--shadow-color) / 0.34),
           66.7px 64.2px 104.1px -2.1px hsl(var(--shadow-color) / 0.34),
           98.3px 94.6px 153.5px -2.5px hsl(var(--shadow-color) / 0.34);
+  --red-seat-background:
+          linear-gradient(to top, hsl(0, 66%, 28%), hsl(0, 66%, 28%), hsl(0, 66%, 28%), hsl(0, 66%, 28%), hsl(0, 66%, 28%), hsl(359, 48%, 48%), hsl(359, 85%, 68%));
+  --purple-seat-background:
+          linear-gradient(to top, hsl(269, 66%, 28%), hsl(269, 66%, 28%), hsl(269, 66%, 28%), hsl(269, 66%, 28%), hsl(269, 66%, 28%), hsl(269, 48%, 48%), hsl(269, 85%, 68%));
+
 }
 
 body {
@@ -406,7 +411,7 @@ table {
 
 .reserved {
   pointer-events: none !important;
-  background-color: purple !important;
+  background: var(--purple-seat-background) !important;
 }
 
 
@@ -422,11 +427,11 @@ table {
     width: 35px;
     height: 50px;
     border-radius: 7px;
-    background: linear-gradient(to top, #761818, #761818, #761818, #761818, #761818, #B54041,  #F3686A);
+    background: var(--red-seat-background);
     margin-bottom: 10px;
     transform: skew(20deg);
     margin-top: -32px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
 
   .row-2 {
