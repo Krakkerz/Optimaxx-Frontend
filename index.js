@@ -1,4 +1,4 @@
-import "/utils/navigo.js"  //Will create the global Navigo object used below
+import "/utility/navigo@8.11.1/lib/navigo.min.js"
 
 import {
     renderText,
