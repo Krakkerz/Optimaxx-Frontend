@@ -4,7 +4,7 @@
     console.log(x)
 }*/
 
-import {handleHttpErrors} from "../../Utility/error.js";
+import {handleHttpErrors} from "../../utility/error.js";
 import {SERVER} from "../../utility/config.js";
 
 const moviesApi = `${SERVER}/api/movies`
