@@ -6,7 +6,8 @@
 
 import {handleHttpErrors} from "../../Utility/error.js";
 
-const SERVER = 'http://localhost:8080/api/movies'
+//const SERVER = 'http://localhost:8080/api/movies'
+const SERVER = 'https://optimaxx.azurewebsites.net/api/movies'
 
 
 export async function data(match){
