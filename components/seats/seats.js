@@ -64,6 +64,7 @@ function renderSeats() {
     document.querySelector(".theatre").appendChild(htmlSeatsLeft)
     document.querySelector(".theatre").appendChild(htmlSeatsRight)
     document.querySelector(".theatre").appendChild(reserveButton)
+    document.querySelector(".theatre").appendChild(input)
 }
 
 function createHTMLFromSeat(seat) {
@@ -94,7 +95,7 @@ async function postReservation() {
     }
 
     const options = makeOptions("POST", {
-        accountId: 93,
+        accountEmail: "john.smith@mail.com",
         seatIds: seatIdsToBeReserved,
         showingId: showingId,
     })
