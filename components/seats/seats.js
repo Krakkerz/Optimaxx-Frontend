@@ -94,7 +94,7 @@ async function postReservation() {
     }
 
     const options = makeOptions("POST", {
-        accountId: 77,
+        accountId: 93,
         seatIds: seatIdsToBeReserved,
         showingId: showingId,
     })
