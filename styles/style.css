@@ -124,6 +124,9 @@ nav ul li a :active {
   width: 210px;
   font-size: 1.225em;
 }
+.movie-container div {
+  align-self: end;
+}
 .movie-container p {
   color: #ffffff;
 }
@@ -158,7 +161,6 @@ nav ul li a :active {
 div {
   margin: 2px;
   justify-items: center;
-  align-self: end;
 }
 
 .genre {

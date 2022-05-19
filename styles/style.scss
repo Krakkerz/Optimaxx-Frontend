@@ -133,6 +133,9 @@ nav {
     width: 210px;
     font-size: 1.225em;
   }
+  div {
+    align-self: end;
+  }
   p {
     color: #ffffff;
   }
@@ -168,7 +171,6 @@ nav {
   div {
     margin: 2px;
     justify-items: center;
-    align-self: end;
   }
   .genre {
     max-width: 210px;
