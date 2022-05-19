@@ -64,7 +64,6 @@ function renderSeats() {
     document.querySelector(".theatre").appendChild(htmlSeatsLeft)
     document.querySelector(".theatre").appendChild(htmlSeatsRight)
     document.querySelector(".theatre").appendChild(reserveButton)
-    document.querySelector(".theatre").appendChild(input)
 }
 
 function createHTMLFromSeat(seat) {
